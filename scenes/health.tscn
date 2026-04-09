@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bw3f3p27cbes7"]
+
+[ext_resource type="Texture2D" uid="uid://bdqqa1c5prl0n" path="res://asset/toppng.com-minecraft-heart-png-8-bits-heart-904x848.png" id="1_5e2k1"]
+
+[node name="health" type="Panel" unique_id=1171341181]
+offset_right = 211.0
+offset_bottom = 65.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=274285922]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 66.0
+
+[node name="heart" type="TextureRect" parent="HBoxContainer" unique_id=1136252991]
+layout_mode = 2
+texture = ExtResource("1_5e2k1")
+expand_mode = 2
+
+[node name="heart2" type="TextureRect" parent="HBoxContainer" unique_id=36301983]
+layout_mode = 2
+texture = ExtResource("1_5e2k1")
+expand_mode = 2
+
+[node name="heart3" type="TextureRect" parent="HBoxContainer" unique_id=1274569163]
+layout_mode = 2
+texture = ExtResource("1_5e2k1")
+expand_mode = 2
