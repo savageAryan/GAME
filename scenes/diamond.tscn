@@ -2,6 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://dn604lraeokui" path="res://asset/diamond-sh.png" id="1_0a7ml"]
 
+[sub_resource type="GDScript" id="GDScript_0a7ml"]
+script/source = "extends Area2D
+
+
+var score = 0
+
+
+
+
+
+
+
+func _on_area_entered(body):
+
+	if body.is_in_group(\"player\"):
+		GameManager.score += 1
+	
+	queue_free()
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_okr8r"]
 atlas = ExtResource("1_0a7ml")
 region = Rect2(0, 0, 32, 32)
@@ -67,10 +87,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0a7ml"]
-radius = 8.0
+radius = 9.817404
 
-[node name="diamond" type="Area2D" unique_id=600192798]
+[node name="diamond" type="Area2D" unique_id=387802175]
 scale = Vector2(5.809412, 6.02089)
+collision_layer = 2
+collision_mask = 4
+script = SubResource("GDScript_0a7ml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=745320773]
 sprite_frames = SubResource("SpriteFrames_wpdkq")
@@ -79,5 +102,7 @@ autoplay = "diamond animation"
 frame_progress = 0.8418624
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1253804447]
-position = Vector2(0, -1)
+position = Vector2(0, 2.657414)
 shape = SubResource("CircleShape2D_0a7ml")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

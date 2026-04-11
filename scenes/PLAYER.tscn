@@ -20,19 +20,19 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
-		if Input.is_action_just_released(\"ui_accept\") and velocity.y<0:
+		if Input.is_action_just_released(\"jump\") and velocity.y<0:
 			velocity.y = JUMP_VELOCITY /4
 
 	# Handle jump.
-	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+	var direction := Input.get_axis(\"left\", \"right\")
 	if direction:
 		velocity.x = direction * SPEED
-		animated_sprite_2d.play(\"walking\")
+		animated_sprite_2d.play(\"walking\")  
 		
 		animated_sprite_2d.flip_h = true if direction < 0 else false
 	else:
@@ -50,7 +50,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hitbox_body_entered(body):
+
+	
 	get_tree().change_scene_to_file(\"res://scenes/game.tscn\")
+	
+
+	
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1u2fj"]
@@ -106,8 +111,8 @@ radius = 51.0
 height = 240.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_34c50"]
-radius = 32.0
-height = 230.0
+radius = 20.0
+height = 206.0
 
 [node name="player" type="CharacterBody2D" unique_id=1511276777]
 script = SubResource("GDScript_5qx4t")
@@ -122,9 +127,11 @@ shape = SubResource("CapsuleShape2D_gk14i")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=817792520]
 position = Vector2(-52, -2)
-collision_mask = 4
+collision_layer = 4
+collision_mask = 12
 
 [node name="hitbox for" type="CollisionShape2D" parent="hitbox" unique_id=1508898220]
+position = Vector2(2, 6)
 shape = SubResource("CapsuleShape2D_34c50")
 debug_color = Color(0.70196074, 0.051432807, 0.18227313, 0.41960785)
 
