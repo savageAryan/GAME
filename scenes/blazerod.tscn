@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://6ka6wb26k4vr"]
+
+[ext_resource type="Texture2D" uid="uid://n8m1pkpqb2ei" path="res://asset/Blaze_Rod.png" id="1_8j3dt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxy7y"]
+size = Vector2(273, 245)
+
+[node name="blazerod" type="Area2D" unique_id=81090048 groups=["blaze"]]
+scale = Vector2(0.39999908, 0.39999908)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=456693693]
+position = Vector2(2.5, 10.5)
+shape = SubResource("RectangleShape2D_nxy7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=339471077]
+texture = ExtResource("1_8j3dt")

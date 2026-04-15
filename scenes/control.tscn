@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gmk4kcp838rt"]
 
 [ext_resource type="FontFile" uid="uid://dvuqrtb0et1yy" path="res://asset/Craft3D.otf" id="1_5p55f"]
+[ext_resource type="Texture2D" uid="uid://c48n41ei61okb" path="res://asset/GAME (DEBUG) 13-04-2026 17_49_31.png" id="1_r67kn"]
 
 [sub_resource type="GDScript" id="GDScript_5p55f"]
 script/source = "extends Control
@@ -25,6 +26,7 @@ func _on_quit_pressed() -> void:
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r67kn"]
+texture = ExtResource("1_r67kn")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5p55f"]
 bg_color = Color(0.4724152, 0.4724152, 0.4724151, 1)
@@ -63,6 +65,7 @@ grow_vertical = 2
 script = SubResource("GDScript_5p55f")
 
 [node name="Panel" type="Panel" parent="." unique_id=1035695311]
+modulate = Color(0.7137255, 0.7137255, 0.7137255, 0.8235294)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

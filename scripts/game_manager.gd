@@ -1,3 +1,4 @@
 extends Node
 
-var score = 0
+var diamonds = 0
+var blaze = 0

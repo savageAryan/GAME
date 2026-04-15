@@ -7,19 +7,6 @@ script/source = "extends Area2D
 
 
 var score = 0
-
-
-
-
-
-
-
-func _on_area_entered(body):
-
-	if body.is_in_group(\"player\"):
-		GameManager.score += 1
-	
-	queue_free()
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_okr8r"]
@@ -89,7 +76,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_0a7ml"]
 radius = 9.817404
 
-[node name="diamond" type="Area2D" unique_id=387802175]
+[node name="diamond" type="Area2D" unique_id=387802175 groups=["diamond"]]
 scale = Vector2(5.809412, 6.02089)
 collision_layer = 2
 collision_mask = 4

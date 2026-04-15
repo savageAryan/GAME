@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c1d8e4qqwnk5o"]
+
+[ext_resource type="Script" uid="uid://h27747lobyax" path="res://scripts/killchamber.gd" id="1_tgmfh"]
+
+[node name="killchamber" type="Area2D" unique_id=388484740]
+collision_mask = 2
+script = ExtResource("1_tgmfh")
+
+[node name="Timer" type="Timer" parent="." unique_id=1859649553]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
