@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bysqp7optwo1c"]
+
+[ext_resource type="Script" uid="uid://fx0a1n5kvfmt" path="res://scripts/message.gd" id="1_11qlq"]
+
+[node name="message" type="Panel" unique_id=689905494]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_11qlq")
+
+[node name="Label" type="Label" parent="." unique_id=1715860092]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 77.0
+offset_bottom = 29.0
+text = " MESSAGE:"

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bnj6j4epkknt"]
+
+[ext_resource type="Script" uid="uid://bcp2fnr67bj28" path="res://scripts/bow.gd" id="1_prjx1"]
+[ext_resource type="Texture2D" uid="uid://vomjkyuksgjc" path="res://asset/bow.png" id="1_vt0lb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prjx1"]
+radius = 530.18207
+
+[node name="bow" type="CharacterBody2D" unique_id=1414611262]
+rotation = 1.8218368
+script = ExtResource("1_prjx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599080325]
+position = Vector2(380, 360)
+shape = SubResource("CircleShape2D_prjx1")
+
+[node name="rotationNode" type="Node2D" parent="." unique_id=1971070575]
+
+[node name="Sprite2D" type="Sprite2D" parent="rotationNode" unique_id=871457290]
+position = Vector2(426.5, 426.5)
+scale = Vector2(2.4216666, 2.4216666)
+texture = ExtResource("1_vt0lb")
+
+[node name="FirePoint" type="Marker2D" parent="rotationNode" unique_id=7785198]
+position = Vector2(324, 224)
+rotation = 0.71974534

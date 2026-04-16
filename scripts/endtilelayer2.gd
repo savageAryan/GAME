@@ -2,6 +2,7 @@ extends TileMapLayer
 
 
 
+@onready var pause_menu: Control = $"../PauseMenu"
 
 
 

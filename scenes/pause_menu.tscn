@@ -1,21 +1,43 @@
 [gd_scene format=3 uid="uid://xk6mjfqbcjis"]
 
+[ext_resource type="Shader" uid="uid://c8njj25uamxnb" path="res://scenes/pause_menu.gdshader" id="1_kukqi"]
 [ext_resource type="FontFile" uid="uid://dvuqrtb0et1yy" path="res://asset/Craft3D.otf" id="1_n87rw"]
+[ext_resource type="FontFile" uid="uid://dgbk88sm0gxe1" path="res://asset/Craft3D-Clean.otf" id="2_myx47"]
 
 [sub_resource type="GDScript" id="GDScript_n87rw"]
 script/source = "extends Control
 
+@onready var end = $\"../../\"
 
+
+func _ready():
+	visible = false
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed('pause'):
+		toggle_pause()
+		
+func toggle_pause():
+	get_tree().paused = !get_tree().paused
+	visible = get_tree().paused
+	
 
 
 func _on_resume_pressed():
 	get_tree().paused = false
-	get_parent().visible = false
+	
+	await get_tree().process_frame
+	visible = false
+	print(\"yes\")
+	
 
 
-func _on_quit_pressed():
+func _on_quit_pressed() -> void:
 	get_tree().quit()
 "
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d2l8"]
+shader = ExtResource("1_kukqi")
+shader_parameter/amount = 3.0000001425
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uahpa"]
 bg_color = Color(0.590625, 0.590625, 0.590625, 1)
@@ -34,16 +56,31 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.8375, 0.8375, 0.8375, 1)
 
-[node name="pause menu" type="Control" unique_id=483416730]
-process_mode = 2
+[node name="PauseMenu" type="Control" unique_id=483416730]
+process_mode = 3
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.0044805, 1)
+scale = Vector2(6.437176, 6.4084635)
 script = SubResource("GDScript_n87rw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1913689592]
+material = SubResource("ShaderMaterial_5d2l8")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1868.9872
+offset_top = -1126.167
+offset_right = -1825.7672
+offset_bottom = -1099.4277
+grow_horizontal = 2
+scale = Vector2(84.40253, 84.40253)
 
 [node name="TextEdit" type="TextEdit" parent="." unique_id=183079380]
 layout_mode = 1
@@ -52,15 +89,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -230.96516
-offset_top = -132.0
-offset_right = 223.87683
-offset_bottom = -33.5345
+offset_left = -221.21506
+offset_top = -228.60394
+offset_right = 233.62692
+offset_bottom = -130.13844
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_n87rw")
 theme_override_font_sizes/font_size = 74
 text = "GAME PAUSED"
+editable = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1641081191]
 layout_mode = 1
@@ -69,21 +107,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -161.397
-offset_top = -20.0
-offset_right = -50.397003
-offset_bottom = 62.0
+offset_left = -182.79926
+offset_top = -107.41136
+offset_right = 182.79926
+offset_bottom = 107.41136
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.6508248, 1.8834724)
 theme_override_constants/separation = 6
+alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="RESUME" type="Button" parent="VBoxContainer" unique_id=1373068425]
+process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 7
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 27
+theme_override_fonts/font = ExtResource("2_myx47")
+theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_uahpa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n87rw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_myx47")
@@ -91,10 +132,12 @@ text = "RESUME
 "
 
 [node name="QUIT" type="Button" parent="VBoxContainer" unique_id=1948893779]
+process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 7
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_myx47")
+theme_override_font_sizes/font_size = 50
 text = "QUIT"
 
 [connection signal="pressed" from="VBoxContainer/RESUME" to="." method="_on_resume_pressed"]

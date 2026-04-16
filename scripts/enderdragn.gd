@@ -1,12 +1,19 @@
 extends CharacterBody2D
 @onready var rotation_node: Node2D = $rotationNode
-
 @onready var animated_sprite_2d: AnimatedSprite2D = $rotationNode/AnimatedSprite2D
-@onready var dragonballstartmark: Marker2D = $rotationNode/dragonballstartmark
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var dragonballstartmark: Marker2D = $rotationNode/AnimatedSprite2D/dragonballstartmark
+
 
 const DRAGONBALL = preload("uid://ds8wlxu0w3r04")
+var max_health: int = 30
+var health: int = max_health
 
+func take_damage(amount):
+	health -= amount
+	print("dragon health")
+	if health <= 0:
+		queue_free()
+		print('dragondied')
 
 
 const SPEED = 300.0
@@ -56,7 +63,7 @@ func _set_animation():
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.animation == "dragonanimation":
-		if animated_sprite_2d.frame == 6:
+		if animated_sprite_2d.frame == 6 :
 			_create_dragonball()
 			
 

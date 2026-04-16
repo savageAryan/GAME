@@ -60,7 +60,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	
 func _create_fireball():
-	print("shooting fitrball")
+	
 	var fireballnode = FIREBALL.instantiate()
 	
 	var player = get_tree().get_first_node_in_group("player")

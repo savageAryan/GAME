@@ -12,17 +12,16 @@ func _ready() -> void:
 	get_tree().create_timer(10).timeout.connect(queue_free)
 
 func _physics_process(delta: float) -> void:
-	if direction:
-		global_position += direction * speed * delta
-		look_at(global_position + direction)
+	position += direction * speed * delta
 
 
 
 
 
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		area.get_damage(3)
+func _on_body_entered(body):
+	if body.is_in_group("dragon"):
+		body.take_damage(3)
+		print("hit dragon")
 		
-	queue_free()
+		queue_free()
 	
