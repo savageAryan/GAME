@@ -52,14 +52,19 @@ func _physics_process(delta: float) -> void:
 
 
 
+
+
 	move_and_slide()
-
-
-func _on_hitbox_body_entered(body):
-
 	
+
+
+
+
+
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
 	get_tree().change_scene_to_file(\"res://scenes/game.tscn\")
-	
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1u2fj"]
@@ -131,8 +136,7 @@ shape = SubResource("CapsuleShape2D_gk14i")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=817792520 groups=["player"]]
 position = Vector2(-52, -2)
-collision_layer = 4
-collision_mask = 14
+collision_mask = 6
 script = ExtResource("2_3lut5")
 
 [node name="hitbox for" type="CollisionShape2D" parent="hitbox" unique_id=1508898220]
@@ -140,6 +144,5 @@ position = Vector2(2, 6)
 shape = SubResource("CapsuleShape2D_34c50")
 debug_color = Color(0.70196074, 0.051432807, 0.18227313, 0.41960785)
 
-[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="hitbox" to="hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

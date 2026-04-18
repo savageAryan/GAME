@@ -2,28 +2,42 @@ extends CharacterBody2D
 @onready var rotation_node: Node2D = $rotationNode
 @onready var animated_sprite_2d: AnimatedSprite2D = $rotationNode/AnimatedSprite2D
 @onready var dragonballstartmark: Marker2D = $rotationNode/AnimatedSprite2D/dragonballstartmark
+@onready var animation_player: AnimationPlayer = $CollisionShape2D/AnimationPlayer
+
 
 
 const DRAGONBALL = preload("uid://ds8wlxu0w3r04")
-var max_health: int = 30
+var max_health: int = 3
 var health: int = max_health
+
+@onready var dragonegg: Sprite2D = $"../dragonegg"
 
 func take_damage(amount):
 	health -= amount
 	print("dragon health")
 	if health <= 0:
+		var message = get_tree().current_scene.get_node("player/Camera2D/message")
+		message.show_message("MESSAGE: OHH!!! DRAGON'S DEAD")
 		queue_free()
 		print('dragondied')
+		var egg = get_tree().current_scene.get_node("dragonegg")
+		egg.visible = true
+
+	
+		
 
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var player = null
 
+
 var isShooting = false
 
 
 func _physics_process(delta: float) -> void:
+	
+	
 
 	
 
@@ -63,7 +77,7 @@ func _set_animation():
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.animation == "dragonanimation":
-		if animated_sprite_2d.frame == 6 :
+		if animated_sprite_2d.frame == 6:
 			_create_dragonball()
 			
 
@@ -73,7 +87,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	
 func _create_dragonball():
-	print("shooting fitrball")
+	print("shooting dragonball")
 	var dragonballnode = DRAGONBALL.instantiate()
 	
 	var player = get_tree().get_first_node_in_group("player")

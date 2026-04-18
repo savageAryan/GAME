@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body):
 	if body.is_in_group("dragon"):
-		body.take_damage(3)
+		body.take_damage(2)
 		print("hit dragon")
 		
 		queue_free()

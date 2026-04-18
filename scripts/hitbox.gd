@@ -41,7 +41,7 @@ func _on_area_entered(area):
 		area.queue_free()
 		diamond_label.text = "diamond: " + str(player.diamond_counter)
 	if area.is_in_group("blaze"):
-		print("in")
+		
 		
 		player.blaze_counter += 1
 		GameManager.blaze = player.blaze_counter

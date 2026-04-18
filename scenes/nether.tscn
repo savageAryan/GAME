@@ -1212,7 +1212,7 @@ texture = ExtResource("2_vpswc")
 sources/0 = SubResource("TileSetAtlasSource_ountj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fa7uo"]
-size = Vector2(242.5, 385.5)
+size = Vector2(338.25, 463.75)
 
 [node name="Node2D" type="Node2D" unique_id=285898345]
 script = ExtResource("1_p46tj")
@@ -1265,11 +1265,11 @@ position = Vector2(8495, -5783)
 position = Vector2(4878, -4206)
 
 [node name="netherportal" type="Area2D" parent="." unique_id=463589556]
-collision_mask = 14
+collision_layer = 0
 script = ExtResource("10_c17vx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="netherportal" unique_id=531335563]
-position = Vector2(-582, -249)
+position = Vector2(-583, -266)
 shape = SubResource("RectangleShape2D_fa7uo")
 
 [node name="blazerod" parent="." unique_id=81090048 instance=ExtResource("11_fa7uo")]

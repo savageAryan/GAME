@@ -3,6 +3,47 @@
 [ext_resource type="Texture2D" uid="uid://dtw840k7dhkpb" path="res://asset/enderdragonsprite.png" id="1_jk04o"]
 [ext_resource type="Script" uid="uid://cckfr3wc8ved3" path="res://scripts/enderdragn.gd" id="1_ktx7c"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktx7c"]
+radius = 330.36987
+
+[sub_resource type="Animation" id="Animation_2n72e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-44, 36)]
+}
+
+[sub_resource type="Animation" id="Animation_70kll"]
+resource_name = "colliion of draggon"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 11.966666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-44, 36), Vector2(-10044, 36), Vector2(-44, 36)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gkrln"]
+_data = {
+&"RESET": SubResource("Animation_2n72e"),
+&"colliion of draggon": SubResource("Animation_70kll")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ktx7c"]
 atlas = ExtResource("1_jk04o")
 region = Rect2(0, 0, 547, 485)
@@ -263,9 +304,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ktx7c"]
-radius = 330.36987
-
 [sub_resource type="Animation" id="Animation_ktx7c"]
 length = 12.0
 tracks/0/type = "value"
@@ -344,11 +382,20 @@ _data = {
 collision_mask = 13
 script = ExtResource("1_ktx7c")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=207526594 groups=["dragon"]]
+position = Vector2(-44, 36)
+shape = SubResource("CircleShape2D_ktx7c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape2D" unique_id=1145938743]
+libraries/ = SubResource("AnimationLibrary_gkrln")
+autoplay = &"colliion of draggon"
+
 [node name="rotationNode" type="Node2D" parent="." unique_id=293801691]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="rotationNode" unique_id=19525510]
 position = Vector2(61.99997, 72)
-scale = Vector2(-1.735, 1.735)
+rotation = -3.1415927
+scale = Vector2(1.735, -1.735)
 sprite_frames = SubResource("SpriteFrames_caup7")
 animation = &"dragonanimation"
 frame = 18
@@ -358,12 +405,6 @@ frame_progress = 0.86159784
 position = Vector2(-279.5389, 178.09799)
 rotation = 3.1415927
 scale = Vector2(0.57636887, -0.57636887)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rotationNode/AnimatedSprite2D" unique_id=207526594 groups=["dragon"]]
-position = Vector2(-5.763706, 22.1902)
-rotation = 3.1415927
-scale = Vector2(0.57636887, -0.57636887)
-shape = SubResource("CircleShape2D_ktx7c")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=2020638089]
 position = Vector2(-10000, 0)

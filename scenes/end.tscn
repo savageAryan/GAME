@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://bnj6j4epkknt" path="res://scenes/bow.tscn" id="7_oc5t2"]
 [ext_resource type="PackedScene" uid="uid://bw3f3p27cbes7" path="res://scenes/health.tscn" id="7_ovs12"]
 [ext_resource type="PackedScene" uid="uid://b188kv5lksdpt" path="res://scenes/enderdragn.tscn" id="8_ee763"]
-[ext_resource type="Script" uid="uid://cc8qsuexph4ml" path="res://scenes/area_2d.gd" id="9_nl5ow"]
+[ext_resource type="PackedScene" uid="uid://bysqp7optwo1c" path="res://scenes/message.tscn" id="11_stj65"]
 [ext_resource type="PackedScene" uid="uid://xk6mjfqbcjis" path="res://scenes/pause_menu.tscn" id="12_njoby"]
+[ext_resource type="Texture2D" uid="uid://cty8thojl32mt" path="res://asset/dragonegg.png" id="13_sf0ys"]
+[ext_resource type="Script" uid="uid://b05ei7fmagafl" path="res://scripts/dragonegg.gd" id="15_8cwnd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5lv4"]
 texture = ExtResource("2_bvfni")
@@ -1078,8 +1080,8 @@ texture = ExtResource("2_bvfni")
 [sub_resource type="TileSet" id="TileSet_ovs12"]
 sources/0 = SubResource("TileSetAtlasSource_nl5ow")
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_nl5ow"]
-length = 5.1414256
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf0ys"]
+size = Vector2(228.55704, 116.106094)
 
 [node name="end" type="Node2D" unique_id=1034523882]
 script = ExtResource("1_sf0ys")
@@ -1122,9 +1124,8 @@ script = ExtResource("2_8hmjt")
 [node name="player" parent="." unique_id=1511276777 instance=ExtResource("3_s4tl2")]
 
 [node name="bow" parent="player" unique_id=1414611262 instance=ExtResource("7_oc5t2")]
-z_index = 9
-position = Vector2(112, -5.9999995)
-rotation = 2.2521837
+position = Vector2(-41, -2)
+rotation = 1.993463
 scale = Vector2(0.10235987, 0.10235987)
 
 [node name="health" parent="player" unique_id=1171341181 instance=ExtResource("7_ovs12")]
@@ -1138,9 +1139,21 @@ ignore_rotation = false
 zoom = Vector2(0.26, 0.26)
 position_smoothing_enabled = true
 
+[node name="PauseMenu" parent="player/Camera2D" unique_id=483416730 instance=ExtResource("12_njoby")]
+visible = false
+
+[node name="message" parent="player/Camera2D" unique_id=689905494 instance=ExtResource("11_stj65")]
+visible = false
+modulate = Color(0.40336227, 0.55674195, 1, 1)
+offset_left = -3658.0
+offset_top = 1480.0
+offset_right = -3574.0
+offset_bottom = 1512.0
+scale = Vector2(10.160005, 10.160005)
+
 [node name="killchamber" parent="." unique_id=388484740 instance=ExtResource("5_s4tl2")]
-collision_layer = 0
-collision_mask = 4
+collision_layer = 32
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killchamber" unique_id=1625919676]
 scale = Vector2(5.765, 5.765)
@@ -1149,21 +1162,28 @@ shape = SubResource("WorldBoundaryShape2D_s4tl2")
 [node name="enderdragon" parent="." unique_id=1815897580 instance=ExtResource("8_ee763")]
 position = Vector2(19922, -1733)
 scale = Vector2(1.96, 1.96)
+collision_layer = 2
+collision_mask = 4
 
 [node name="Cracks" type="TileMapLayer" parent="." unique_id=2017728748]
 scale = Vector2(8, 8)
 tile_set = SubResource("TileSet_ovs12")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=30462465]
-script = ExtResource("9_nl5ow")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=900194319]
-position = Vector2(2945, 21.999512)
-rotation = 1.5601363
-scale = Vector2(729.1053, -536.15704)
-shape = SubResource("SeparationRayShape2D_nl5ow")
-
-[node name="PauseMenu" parent="." unique_id=483416730 instance=ExtResource("12_njoby")]
+[node name="dragonegg" type="Sprite2D" parent="." unique_id=1691209446]
 visible = false
+position = Vector2(10329, -494)
+scale = Vector2(0.6923078, 0.6923077)
+texture = ExtResource("13_sf0ys")
+script = ExtResource("15_8cwnd")
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[node name="Area2D" type="Area2D" parent="dragonegg" unique_id=1767899989]
+position = Vector2(-21.666992, 14.444397)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dragonegg/Area2D" unique_id=2013889467]
+position = Vector2(240.5, 225.33334)
+scale = Vector2(32.009995, 32.009995)
+shape = SubResource("RectangleShape2D_sf0ys")
+
+[connection signal="body_entered" from="killchamber" to="killchamber" method="_on_body_entered"]
+[connection signal="area_entered" from="dragonegg/Area2D" to="dragonegg" method="_on_area_2d_area_entered"]

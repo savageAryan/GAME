@@ -2,16 +2,12 @@ extends TileMapLayer
 
 
 
-@onready var pause_menu: Control = $"../PauseMenu"
 
 
 
 
 func _process(delta):
-	if (Input.is_action_just_pressed("pause")):
-		get_tree().paused = true
-		$pause_menu.visible = true
-		
+	
 	
 	
 	var mouse_pos = get_global_mouse_position()

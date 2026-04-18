@@ -4,7 +4,6 @@ extends Panel
 
 func show_message(text):
 	visible = true
-	print("message called")
 	label.text = text
 	
 	
