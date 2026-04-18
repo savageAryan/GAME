@@ -1265,9 +1265,9 @@ bus = &"sfx"
 
 [node name="Label" type="Label" parent="." unique_id=1654181243]
 offset_left = 822.0
-offset_top = -1304.0
+offset_top = -1432.0
 offset_right = 2084.0
-offset_bottom = -662.0
+offset_bottom = -673.0
 theme_override_colors/font_color = Color(0.7166054, 0.7705622, 1, 0.6784314)
 theme_override_colors/font_shadow_color = Color(0.734375, 0.734375, 0.734375, 1)
 theme_override_colors/font_outline_color = Color(0.5796363, 0.4004361, 0.65625, 1)
@@ -1278,10 +1278,28 @@ theme_override_fonts/font = ExtResource("19_264po")
 theme_override_font_sizes/font_size = 85
 text = "controls :- 
 w,s,A,D to move
+jump = space
 lmb to break blocks
 rmb to place blocks
 ctrl + lmb to shoot(end excluxive)
 escape to pause the game"
+
+[node name="Label2" type="Label" parent="." unique_id=174791298]
+offset_left = -1993.0
+offset_top = -528.0
+offset_right = -939.0
+offset_bottom = -199.0
+theme_override_colors/font_color = Color(0.7166054, 0.7705622, 1, 0.6784314)
+theme_override_colors/font_shadow_color = Color(0.734375, 0.734375, 0.734375, 1)
+theme_override_colors/font_outline_color = Color(0.5796363, 0.4004361, 0.65625, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("19_264po")
+theme_override_font_sizes/font_size = 85
+text = "NETHER =ABOVE LAVA
+END = BELOW ICE
+-SUGGESTED TO INCRASE VOLUME"
 
 [node name="CharacterBody2D" parent="." unique_id=1511276777 instance=ExtResource("1_80nbo")]
 position = Vector2(53, -147)
