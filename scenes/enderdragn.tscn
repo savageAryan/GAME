@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dtw840k7dhkpb" path="res://asset/enderdragonsprite.png" id="1_jk04o"]
 [ext_resource type="Script" uid="uid://cckfr3wc8ved3" path="res://scripts/enderdragn.gd" id="1_ktx7c"]
+[ext_resource type="AudioStream" uid="uid://bbra54jc1q7du" path="res://asset/Ender_dragon_hurt1.ogg" id="3_e6noe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktx7c"]
 radius = 330.36987
@@ -412,6 +413,9 @@ position = Vector2(-10000, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1483215077]
 libraries/ = SubResource("AnimationLibrary_2n72e")
 autoplay = &"fly"
+
+[node name="dragonhit" type="AudioStreamPlayer" parent="." unique_id=1695642703]
+stream = ExtResource("3_e6noe")
 
 [connection signal="animation_finished" from="rotationNode/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="rotationNode/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

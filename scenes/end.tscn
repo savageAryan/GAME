@@ -14,7 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://bysqp7optwo1c" path="res://scenes/message.tscn" id="11_stj65"]
 [ext_resource type="PackedScene" uid="uid://xk6mjfqbcjis" path="res://scenes/pause_menu.tscn" id="12_njoby"]
 [ext_resource type="Texture2D" uid="uid://cty8thojl32mt" path="res://asset/dragonegg.png" id="13_sf0ys"]
+[ext_resource type="AudioStream" uid="uid://ua80rp02se3m" path="res://asset/Ender_dragon_death.ogg" id="14_wrlrt"]
 [ext_resource type="Script" uid="uid://b05ei7fmagafl" path="res://scripts/dragonegg.gd" id="15_8cwnd"]
+[ext_resource type="AudioStream" uid="uid://d1yionp3p3p0" path="res://asset/blazefiring.mp3" id="15_gm2es"]
+[ext_resource type="AudioStream" uid="uid://khflk7ox83pm" path="res://asset/biome_fest.ogg" id="16_liw33"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5lv4"]
 texture = ExtResource("2_bvfni")
@@ -1165,6 +1168,15 @@ scale = Vector2(1.96, 1.96)
 collision_layer = 2
 collision_mask = 4
 
+[node name="dragondeath" type="AudioStreamPlayer" parent="enderdragon" unique_id=68511805]
+stream = ExtResource("14_wrlrt")
+
+[node name="dragonballthrow" type="AudioStreamPlayer" parent="enderdragon" unique_id=1642980113]
+stream = ExtResource("15_gm2es")
+volume_db = 3.796
+pitch_scale = 0.68
+bus = &"sfx"
+
 [node name="Cracks" type="TileMapLayer" parent="." unique_id=2017728748]
 scale = Vector2(8, 8)
 tile_set = SubResource("TileSet_ovs12")
@@ -1184,6 +1196,9 @@ collision_layer = 32
 position = Vector2(240.5, 225.33334)
 scale = Vector2(32.009995, 32.009995)
 shape = SubResource("RectangleShape2D_sf0ys")
+
+[node name="endambient" type="AudioStreamPlayer" parent="." unique_id=492193978]
+stream = ExtResource("16_liw33")
 
 [connection signal="body_entered" from="killchamber" to="killchamber" method="_on_body_entered"]
 [connection signal="area_entered" from="dragonegg/Area2D" to="dragonegg" method="_on_area_2d_area_entered"]

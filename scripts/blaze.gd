@@ -3,6 +3,9 @@ extends CharacterBody2D
 @onready var fireballstartmark: Marker2D = $rotationNode/fireballstartmark
 @onready var animated_sprite_2d: AnimatedSprite2D = $rotationNode/AnimatedSprite2D
 
+@onready var blazefiring: AudioStreamPlayer2D = $"../player/Camera2D/blazefiring"
+
+
 
 const FIREBALL = preload("uid://dyrousjidr0v1")
 
@@ -52,6 +55,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite_2d.animation == "blazeanimation":
 		if animated_sprite_2d.frame == 6:
 			_create_fireball()
+			blazefiring.play()
 			
 
 

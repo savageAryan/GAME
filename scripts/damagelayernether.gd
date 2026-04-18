@@ -1,8 +1,10 @@
 extends TileMapLayer
 
 var mining_progress := 0.0
-var mining_time := 1.0
+var mining_time := 0.5
 var current_tile := Vector2i(-1, -1)
+@onready var place: AudioStreamPlayer = $place
+@onready var break_1: AudioStreamPlayer = $break1
 
 const DIAMOND = preload("uid://xqjxvxnbggem")
 
@@ -48,6 +50,7 @@ func _process(delta):
 
 	
 	if Input.is_action_just_pressed("place"):
+		place.play()
 		set_cell(tile_pos, 0, Vector2i(2, 0))
 
 
@@ -70,6 +73,7 @@ func _process(delta):
 		if mining_progress >= mining_time:
 			break_tile(tile_pos)
 			mining_progress = 0
+			break_1.play()
 
 	else:
 		reset_crack()

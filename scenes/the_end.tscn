@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://c8cf6t7kui2yh"]
+
+[ext_resource type="Shader" uid="uid://c8njj25uamxnb" path="res://scenes/pause_menu.gdshader" id="1_a842l"]
+[ext_resource type="Texture2D" uid="uid://cty8thojl32mt" path="res://asset/dragonegg.png" id="2_2x4e2"]
+[ext_resource type="Script" uid="uid://byrbhqwdb3jyc" path="res://scripts/the_end.gd" id="2_fpimk"]
+[ext_resource type="FontFile" uid="uid://6sinuuxgcrrr" path="res://asset/vladimir.ttf" id="3_wtwb0"]
+[ext_resource type="AudioStream" uid="uid://dt4pkypwsxqj" path="res://asset/baby-says-papa.mp3" id="4_2jfs8"]
+[ext_resource type="FontFile" uid="uid://dgbk88sm0gxe1" path="res://asset/Craft3D-Clean.otf" id="6_pugnu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2x4e2"]
+shader = ExtResource("1_a842l")
+shader_parameter/amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a842l"]
+shader = ExtResource("1_a842l")
+shader_parameter/amount = 0.7590000360525
+
+[sub_resource type="Animation" id="Animation_pugnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fhtex"]
+resource_name = "texrec"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99, 1.99, 3.01, 4.01, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0.7921569), Color(0, 0, 0, 0.6039216), Color(0, 0, 0, 0.21568628), Color(0, 0, 0, 0.039215688)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hdc6s"]
+_data = {
+&"RESET": SubResource("Animation_pugnu"),
+&"texrec": SubResource("Animation_fhtex")
+}
+
+[node name="the end" type="Control" unique_id=573198875]
+material = SubResource("ShaderMaterial_2x4e2")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_fpimk")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=580283858]
+modulate = Color(0.1875, 0.1875, 0.1875, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.56
+anchor_top = -0.74300003
+anchor_right = 1.692
+anchor_bottom = 1.6800001
+offset_top = -0.099990845
+offset_bottom = -3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1886695569]
+position = Vector2(251.00003, 145)
+scale = Vector2(1.5171705, 1.5171702)
+texture = ExtResource("2_2x4e2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1293106141]
+modulate = Color(0.1875, 0.1875, 0.1875, 1)
+material = SubResource("ShaderMaterial_a842l")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.358
+anchor_top = -0.26700002
+anchor_right = 1.319
+anchor_bottom = 1.4100001
+offset_top = 0.1000061
+offset_right = -0.16668701
+offset_bottom = -3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1184892582]
+position = Vector2(253.99998, 151.00002)
+
+[node name="Label" type="Label" parent="." unique_id=1610750309]
+layout_mode = 0
+offset_left = -475.0
+offset_top = -77.0
+offset_right = 979.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 0.79214567, 0.7742201, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_wtwb0")
+theme_override_font_sizes/font_size = 120
+text = "THE DRAGON LEFT YOU AN EGG!!!"
+
+[node name="Label2" type="Label" parent="." unique_id=1683785306]
+layout_mode = 0
+offset_left = -105.0
+offset_top = 186.0
+offset_right = 633.0
+offset_bottom = 280.0
+theme_override_colors/font_color = Color(1, 0.79214567, 0.7742201, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_wtwb0")
+theme_override_font_sizes/font_size = 70
+text = "congractulations!! daddy"
+
+[node name="babyvoice" type="AudioStreamPlayer2D" parent="." unique_id=1512422915]
+stream = ExtResource("4_2jfs8")
+volume_db = 13.084
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=731510012]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -718.0
+offset_top = -530.0
+offset_right = 1220.0
+offset_bottom = 708.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect3" unique_id=2007579430]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_hdc6s")
+autoplay = &"texrec"
+
+[node name="Button" type="Button" parent="." unique_id=2049143727]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 55.0
+offset_top = 294.0
+offset_right = 476.0
+offset_bottom = 438.0
+theme_override_fonts/font = ExtResource("6_pugnu")
+theme_override_font_sizes/font_size = 90
+text = "QUIT"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

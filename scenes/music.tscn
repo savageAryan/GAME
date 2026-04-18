@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cn1i0b53fk1wo"]
+
+[ext_resource type="AudioStream" uid="uid://bqfv13rmgbnm" path="res://asset/ambient.mp3" id="1_05ggv"]
+
+[node name="music" type="AudioStreamPlayer" unique_id=681302777]
+stream = ExtResource("1_05ggv")
+autoplay = true
+bus = &"music"

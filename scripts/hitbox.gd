@@ -6,6 +6,8 @@ var health_min := 0
 @onready var player: = get_parent()
 @onready var diamond_label = $"../Camera2D/Label"
 
+@onready var blazerodpick: AudioStreamPlayer = $"../Camera2D/blazerodpick"
+
 
 
 
@@ -31,21 +33,22 @@ func get_damage(damage:int):
 
 
 
-
 func _on_area_entered(area):
 	if area.is_in_group("diamond"):
 		
-		player.diamond_counter += 1
+		player.diamond_counter = GameManager.diamonds + 1
 		GameManager.diamonds = player.diamond_counter
 		
-		area.queue_free()
+		area.collect()
 		diamond_label.text = "diamond: " + str(player.diamond_counter)
 	if area.is_in_group("blaze"):
 		
 		
 		player.blaze_counter += 1
 		GameManager.blaze = player.blaze_counter
-		print(GameManager.blaze)
+		
+		blazerodpick.play()
+		
 		area.queue_free()
 	
 
