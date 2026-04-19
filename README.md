@@ -22,6 +22,7 @@ are some of the features
 ## HOW TO PLAY???
  1. Just download the ZIP game file from github or from demo link(itch.io)
  2. just extract it, play the .exe(plese read README first)
- 3. enjoy the game
+ 3. if a window pops up saying "Windows Protected your PC", click more info, Run anyway
+ 4. enjoy the game
 # Developer notes
 I had a great time making the project and loved the process of learning that it brought me , i hope you like the game ,and please increase the volume if you are not wearing headphones, do tell me how you like the endscene.
