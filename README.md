@@ -20,7 +20,7 @@ are some of the features
 * PAUSE = ESC
 * SHOOT = CTRL + LMB (END EXCLUSIVE)
 ## HOW TO PLAY???
- 1. Just download the ZIP game file from github or from demo link(itch.io)
+ 1. Just download the ZIP game file from demo link(itch.io)
  2. just extract it, play the .exe(plese read README first)
  3. if a window pops up saying "Windows Protected your PC", click more info, Run anyway
  4. enjoy the game
