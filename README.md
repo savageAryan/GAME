@@ -17,4 +17,9 @@ are some of the features
 * BREAK = LMB
 * PAUSE = ESC
 * SHOOT = CTRL + LMB (END EXCLUSIVE)
-  
+## HOW TO PLAY???
+ 1. Just download the .exe file from github or from demo link(itch.io)
+ 2. a zip file will be downloaded just extract it, play the .exe
+ 3. enjoy the game
+# Developer notes
+I had a great time making the project and loved the process of learning that it brought me , i hope you like the game ,and please increase the volume if you are not wearing headphones, do tell me how you like the endscene.
