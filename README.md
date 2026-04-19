@@ -18,7 +18,7 @@ are some of the features
 * PAUSE = ESC
 * SHOOT = CTRL + LMB (END EXCLUSIVE)
 ## HOW TO PLAY???
- 1. Just download the .exe file from github or from demo link(itch.io)
+ 1. Just download the game file from github or from demo link(itch.io)
  2. a zip file will be downloaded just extract it, play the .exe
  3. enjoy the game
 # Developer notes
